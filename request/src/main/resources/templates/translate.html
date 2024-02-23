@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="/translate">
+    <label for="input"></label>
+    <input id="input" name="text">
+
+    <button type="submit" th:text="번역하기"></button>
+</form>
+
+<h1>번역 결과</h1>
+<p th:text="${transText}"></p>
+
+</body>
+</html>
