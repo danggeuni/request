@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="/short">
+    <label for="input"></label>
+    <input id="input" name="url">
+
+    <button type="submit" th:text="주소압축"></button>
+</form>
+
+<h1>실전 압축 주소</h1>
+<a th:href="${shortUrl}" th:text="${shortUrl}" target='_blank'></a>
+
+<h1>원본 주소</h1>
+<p th:text="${origin}"></p>
+
+</body>
+</html>
