@@ -21,21 +21,20 @@ import java.nio.charset.StandardCharsets;
 @Service
 public class OpenApiService {
 
+    private static final String CLIENT_ID = "nh4FuT1AxfKgUPBcPevI";
+    private static final String CLIENT_SECRET = "IJnRHHK8Sl";
+    private static final String API_URL = "https://openapi.naver.com/v1/papago/n2mt";
+
     public String translate(Text text) {
         String requestText = text.getText();
-
-        String clientId = "nh4FuT1AxfKgUPBcPevI";
-        String clientSecret = "IJnRHHK8Sl";
-        String apiURL = "https://openapi.naver.com/v1/papago/n2mt";
+        HttpPost post = new HttpPost(API_URL);
+        post.setHeader("Content-Type", "application/x-www-form-urlencoded");
+        post.setHeader("X-Naver-Client-Id", CLIENT_ID);
+        post.setHeader("X-Naver-Client-Secret", CLIENT_SECRET);
+        String encodedText = URLEncoder.encode(requestText, StandardCharsets.UTF_8);
 
         try {
-            HttpPost post = new HttpPost(apiURL);
-            post.setHeader("Content-Type", "application/x-www-form-urlencoded");
-            post.setHeader("X-Naver-Client-Id", clientId);
-            post.setHeader("X-Naver-Client-Secret", clientSecret);
-
-            requestText = URLEncoder.encode(requestText, StandardCharsets.UTF_8);
-            StringEntity entity = new StringEntity("source=ko&target=en&text=" + requestText);
+            StringEntity entity = new StringEntity("source=ko&target=en&text=" + encodedText);
             post.setEntity(entity);
 
             HttpClient client = HttpClientBuilder.create().build();
