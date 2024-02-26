@@ -15,12 +15,12 @@ import org.apache.http.util.EntityUtils;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 @Service
 public class OpenApiService {
-
     private static final String CLIENT_ID = "nh4FuT1AxfKgUPBcPevI";
     private static final String CLIENT_SECRET = "IJnRHHK8Sl";
     private static final String API_URL = "https://openapi.naver.com/v1/papago/n2mt";
