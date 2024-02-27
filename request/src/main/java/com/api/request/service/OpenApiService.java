@@ -43,8 +43,10 @@ public class OpenApiService {
             String json = EntityUtils.toString(response.getEntity());
             ObjectMapper objectMapper = new ObjectMapper();
             TranslateRoot result = objectMapper.readValue(json, TranslateRoot.class);
+            System.out.println(json);
 
             return result.getMessage().getResult().getTranslatedText();
+
 
             // 방법 2
             // return objectMapper.readTree(json).get("message").get("result").get("translatedText").asText();
